@@ -1,10 +1,10 @@
 package dev.siqueira.financecontrol_sb.Entity;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.annotation.LastModifiedDate;
 
 import java.time.LocalDateTime;
 import java.util.UUID;
@@ -22,7 +22,9 @@ public class UserModel {
     private String username;
     @Column(nullable = false)
     private String password;
+    @CreatedDate
     private LocalDateTime createAt;
+    @LastModifiedDate
     private LocalDateTime updateAt;
 
     public UserModel() {
