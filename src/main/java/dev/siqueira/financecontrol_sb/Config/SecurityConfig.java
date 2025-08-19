@@ -31,7 +31,7 @@ public class SecurityConfig {
     private RSAPrivateKey privateKey;
 
     @Bean
-    DefaultSecurityFilterChain sSecurityFilterChain(HttpSecurity http) throws Exception {
+    DefaultSecurityFilterChain SecurityFilterChain(HttpSecurity http) throws Exception {
         http.csrf(csrf -> csrf.disable())
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers(HttpMethod.POST, "/auth/login").permitAll()
