@@ -13,8 +13,6 @@ import java.util.UUID;
 @Table(name = "Users")
 @Getter
 @Setter
-@NoArgsConstructor
-@AllArgsConstructor
 public class UserModel {
 
     @Id
@@ -26,4 +24,14 @@ public class UserModel {
     private String password;
     private LocalDateTime createAt;
     private LocalDateTime updateAt;
+
+    public UserModel() {
+    }
+
+    public UserModel(String username, String password, LocalDateTime createAt, LocalDateTime updateAt) {
+        this.username = username;
+        this.password = password;
+        this.createAt = createAt;
+        this.updateAt = updateAt;
+    }
 }
