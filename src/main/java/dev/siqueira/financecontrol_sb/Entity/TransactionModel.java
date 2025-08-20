@@ -1,5 +1,6 @@
 package dev.siqueira.financecontrol_sb.Entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import dev.siqueira.financecontrol_sb.Types.TransactionTypes;
 import jakarta.persistence.*;
 import lombok.Getter;
@@ -32,6 +33,11 @@ public class TransactionModel {
     private LocalDateTime createdAt;
     @LastModifiedDate
     private LocalDateTime updatedAt;
+
+    @JsonIgnore
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_id", nullable = false)
+    private UserModel user;
 
     public TransactionModel() {
     }

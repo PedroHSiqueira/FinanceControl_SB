@@ -6,5 +6,7 @@ CREATE TABLE Transactions
     date        TIMESTAMP      NOT NULL,
     type        VARCHAR(50),
     created_at  TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    updated_at  TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    updated_at  TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    user_id     UUID NOT NULL,
+    CONSTRAINT fk_user FOREIGN KEY (user_id) REFERENCES Users (id) ON DELETE CASCADE
 );

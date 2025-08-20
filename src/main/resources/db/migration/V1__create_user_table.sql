@@ -1,8 +1,8 @@
-CREATE TABLE usuarios
+CREATE TABLE Users
 (
-    id         UUID PRIMARY KEY,
-    username   VARCHAR(255) NOT NULL,
-    password   varchar(255) NOT NULL,
-    created_at TIMESTAMPTZ  NOT NULL DEFAULT NOW(),
-    updated_at TIMESTAMPTZ  NOT NULL DEFAULT NOW()
+    id          UUID PRIMARY KEY,
+    username    VARCHAR(255) NOT NULL UNIQUE,
+    password    VARCHAR(255) NOT NULL,
+    create_at   TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+    update_at   TIMESTAMPTZ NOT NULL DEFAULT NOW()
 );

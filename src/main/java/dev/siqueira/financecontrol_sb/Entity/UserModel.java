@@ -1,5 +1,6 @@
 package dev.siqueira.financecontrol_sb.Entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -7,6 +8,7 @@ import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 
 import java.time.LocalDateTime;
+import java.util.List;
 import java.util.UUID;
 
 @Entity
@@ -26,6 +28,9 @@ public class UserModel {
     private LocalDateTime createAt;
     @LastModifiedDate
     private LocalDateTime updateAt;
+
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<TransactionModel> transactions;
 
     public UserModel() {
     }
