@@ -6,5 +6,5 @@ import java.time.LocalDateTime;
 import java.util.UUID;
 
 
-public record TransactionDTO(String description, Double amount, LocalDateTime date, TransactionTypes type, UUID user) {
+public record TransactionDTO(String description, Double amount, String date, TransactionTypes type, UUID user) {
 }
