@@ -32,7 +32,6 @@ public class TransactionMapper {
     }
 
     public TransactionDTO toDTO(TransactionModel model) {
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
         UserModel userModel = userRepository.findById(model.getUser().getId()).orElse(null);
 
         if (userModel == null) {
