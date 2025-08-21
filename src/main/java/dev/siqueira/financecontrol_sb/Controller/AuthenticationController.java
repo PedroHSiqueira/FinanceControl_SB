@@ -1,12 +1,14 @@
 package dev.siqueira.financecontrol_sb.Controller;
 
-import dev.siqueira.financecontrol_sb.Dto.AuthDto;
+import dev.siqueira.financecontrol_sb.Dto.AuthDTO;
+import dev.siqueira.financecontrol_sb.Dto.JwtResponseDTO;
 import dev.siqueira.financecontrol_sb.Entity.UserModel;
 import dev.siqueira.financecontrol_sb.Repository.UserRepository;
 import dev.siqueira.financecontrol_sb.Service.AuthenticationService;
-import org.apache.catalina.User;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -22,20 +24,21 @@ public class AuthenticationController {
     private final AuthenticationService authenticationService;
     private final UserRepository userRepository;
 
-
-    public AuthenticationController(AuthenticationService authenticationService, UserRepository userRepository) {
+    public AuthenticationController(AuthenticationService authenticationService, UserRepository userRepository, AuthenticationManagerBuilder authenticationManagerBuilder) {
         this.authenticationService = authenticationService;
         this.userRepository = userRepository;
     }
 
     @PostMapping("/login")
-    public String authenticate(Authentication authentication) {
-        return authenticationService.authenticate(authentication);
+    public ResponseEntity<?> login(@RequestBody AuthDTO loginRequest) {
+        Authentication authentication = (new UsernamePasswordAuthenticationToken(loginRequest.username(), loginRequest.password()));
+        String token = authenticationService.authenticate(authentication);
+        return ResponseEntity.ok(new JwtResponseDTO(token));
     }
 
     @PostMapping("/register")
-    public ResponseEntity<String> register(@RequestBody AuthDto authDto) {
-        if (this.userRepository.findByUsername(authDto.username()).isPresent()){
+    public ResponseEntity<String> register(@RequestBody AuthDTO authDto) {
+        if (this.userRepository.findByUsername(authDto.username()).isPresent()) {
             return ResponseEntity.badRequest().build();
         }
 
