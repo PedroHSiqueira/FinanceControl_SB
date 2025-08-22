@@ -7,7 +7,6 @@ O sistema oferece autenticação com **JWT**, controle de usuários e integraç�
 
 - 🔑 **Autenticação com JWT** — Login seguro utilizando tokens.
 - 👤 **Gestão de Usuários** — Cadastro e controle de contas.
-- 👪 **Cadastro de Beneficiários** — Registro e consulta de beneficiários.
 - 💾 **Persistência com JPA/Hibernate** — Integração simplificada com banco de dados relacional.
 - 🌐 **API REST** — Pronta para ser consumida por front-ends, mobile ou integrações externas.
 - 🐳 **Suporte a Docker** — Ambiente configurado com `docker-compose` e variáveis de ambiente.
