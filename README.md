@@ -1,7 +1,7 @@
 # FinanceControl_SB 💰📊
 
 **FinanceControl_SB** é uma aplicação backend desenvolvida em **Java + Spring Boot** para gerenciamento financeiro.  
-O sistema oferece autenticação com **JWT**, controle de usuários, cadastro de beneficiários e integração com banco de dados via **JPA/Hibernate**.
+O sistema oferece autenticação com **JWT**, controle de usuários e integração com banco de dados via **JPA/Hibernate**.
 
 ## 🚀 Funcionalidades
 
